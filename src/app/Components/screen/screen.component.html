@@ -1,0 +1,54 @@
+<div class="container">
+    <main class="innerContainer">
+
+        
+        <ul class="ShowCase">
+            <li>
+              <span class="seat freeSeat"><small>N/A</small></span>
+            </li>
+            <li>
+              <span class="seat selectedSeat"><small>Selected</small></span>
+            </li>
+            <li>
+              <span class="seat reservedSeat"><small>Occupied</small></span>
+            </li>
+          </ul>
+
+        <div class="screen">
+            <img src="https://imageup.me/images/45621ed6-fd45-4070-8c40-8175eb1e5388.png">
+            <!-- http://pixner.net/boleto/demo/assets/images/movie/screen-thumb.png -->
+        </div>
+
+        <!-- Generate the seating grid -->
+        <div *ngFor="let row of rows">
+            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col)"
+              [ngSwitch]="getStatus(row + col)">
+                <span *ngSwitchCase=1 class="seat selectedSeat"></span>
+                <span *ngSwitchCase=-1 class="seat reservedSeat"></span>
+                <span *ngSwitchDefault class="seat freeSeat"></span>
+        </span>
+        </div>
+
+        <div *ngIf="getNoOfselected()>=6" class="font14 marginTB10">
+            <div class="alert" style="color:red;">You cant book more than 6 seat at a time</div>
+        </div>
+
+        <div  class="proceed-to-book">
+            <div class="book-item">
+                <span>You have Choosed Seat</span>
+                <h3 [hidden]="getNoOfselected()===0" class="title">
+                  <p>{{getcurrentselected()}}</p>
+                </h3>
+            </div>
+            <div class="book-item">
+                <span>Total Price</span>
+                <h3 class="title" *ngIf="getNoOfselected() > 0">{{getNoOfselected()}} seats: {{ticketPrice * getNoOfselected()}} {{currency}}</h3>
+            </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="buttonBar marginTop5" style="color: #f1f1f1;"> 
+                <button (click)="pushToSelected()" (click)="goToPayment()"  [disabled]="getNoOfselected() === 0" class="btn btn-success btn-sm">Continue To Payment</button>
+        </div>        
+    </main>     
+</div>

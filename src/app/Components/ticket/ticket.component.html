@@ -1,0 +1,68 @@
+<section class="login-main-wrapper">
+    <div class="main-container">
+        <div class="login-process">
+            <div class="login-main-container">
+                <div class="thankyou-wrapper">
+                    <h1><img src="http://montco.happeningmag.com/wp-content/uploads/2014/11/thankyou.png" alt="thanks" /></h1>
+                      <p>For choosing us, Please check your tickets below and presenet it at the cinema... </p>
+                      <p>Enjoy the movie 
+                        <img style="width:7% ;" src="https://freepngimg.com/thumb/emoji/73723-emoticon-smiley-sticker-honda-up-amaze-thumbs.png"> 
+                    </p>
+                      <a (click)="cState()" style="cursor: pointer;" >Show ticket</a>
+                      <div class="clr"></div>
+                  </div>
+                  <div class="clr"></div>
+              </div>
+          </div>
+          <div class="clr"></div>
+      </div>
+  </section>
+
+  <!-- <div class="cardWrap">
+    <div class="card cardLeft">
+      <h1>Startup <span>Cinema</span></h1>
+      <div class="title">
+        <h2>How I met your Mother</h2>
+        <span>movie</span>
+      </div>
+      <div class="name">
+        <h2>Vladimir Kudinov</h2>
+        <span>name</span>
+      </div>
+      <div class="seat">
+        <h2>156</h2>
+        <span>seat</span>
+      </div>
+      <div class="time">
+        <h2>12:00</h2>
+        <span>time</span>
+      </div>
+      
+    </div>
+    <div class="card cardRight">
+      <div class="eye"></div>
+      <div class="number">
+        <h3>156</h3>
+        <span>seat</span>
+      </div>
+      <div class="barcode"></div>
+    </div>
+  
+  </div> -->
+
+  <div class="box"  *ngFor="let i of seat" [hidden]="state">
+   
+            <div class='inner'>
+            <h1>Avengers:End-Game</h1>
+            <div class='info clearfix'>
+            <div class='wp'>Seat<h2>{{i}}</h2></div>
+            <div class='wp'>Type<h2>VIP</h2></div>
+            <div class='wp'>Screen<h2>5</h2></div>
+            </div>
+            <div class='total clearfix'>
+            <h2>Total: <p>{{tPerTicket}} EGP</p></h2>
+            <!-- <h2 id="cname" style="padding-left:6px;margin:10px 0px; font-size: 10px;margin-top: 5px;">
+                MovieMadness</h2> -->
+            </div>
+            </div>
+  </div>

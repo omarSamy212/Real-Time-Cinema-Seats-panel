@@ -1,0 +1,258 @@
+
+.thankyou-wrapper
+{
+  width:100%;
+  height:auto;
+  margin:auto;
+  background:#001232; 
+  padding:10px 0px 50px;
+}
+.thankyou-wrapper h1
+{
+  font:100px Arial, Helvetica, sans-serif;
+  text-align:center;
+  color:#f1f1f1;
+  padding:0px 10px 10px;
+}
+.thankyou-wrapper p
+{
+  font:26px Arial, Helvetica, sans-serif;
+  text-align:center;
+  color:#f1f1f1;
+  padding:5px 10px 10px;
+}
+.thankyou-wrapper a
+{
+  font:26px Arial, Helvetica, sans-serif;
+  text-align:center;
+  color:#ffffff;
+  display:block;
+  text-decoration:none;
+  width:250px;
+  background:#0081cb !important;
+  margin:10px auto 0px;
+  padding:15px 20px 15px;
+  border-bottom:5px solid #0081cb !important;
+}
+.thankyou-wrapper a:hover
+{
+  font:26px Arial, Helvetica, sans-serif;
+  text-align:center;
+  color:#001232;
+  display:block;
+  text-decoration:none;
+  width:250px;
+  background:#001232;
+  margin:10px auto 0px;
+  padding:15px 20px 15px;
+  border-bottom:5px solid #001232;
+}
+
+
+
+/* .cardWrap 
+{
+    width: 27em;
+    margin: 3em auto;
+    color: #fff;
+    font-family: sans-serif;
+}
+.card 
+{
+    background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+    height: 11em;
+    float: left;
+    position: relative;
+    padding: 1em;
+    margin-top: 100px;
+}
+.cardLeft 
+{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 16em;
+}
+.cardRight {
+    width: 6.5em;
+    border-left: 0.18em dashed #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.cardRight:before, .cardRight:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.9em;
+    height: 0.9em;
+    background: #fff;
+    border-radius: 50%;
+    left: -0.5em;
+}
+.cardRight:before {
+    top: -0.4em;
+}
+.cardRight:after {
+    bottom: -0.4em;
+}
+h1 {
+    font-size: 1.1em;
+    margin-top: 0;
+}
+h1 span {
+    font-weight: normal;
+}
+.title, .name, .seat, .time {
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.title h2, .name h2, .seat h2, .time h2 {
+    font-size: 0.9em;
+    color: #525252;
+    margin: 0;
+}
+.title span, .name span, .seat span, .time span {
+    font-size: 0.7em;
+    color: #a2aeae;
+}
+.title {
+    margin: 2em 0 0 0;
+}
+.name, .seat {
+    margin: 0.7em 0 0 0;
+}
+.time {
+    margin: 0.7em 0 0 1em;
+}
+.seat, .time {
+    float: left;
+}
+.eye {
+    position: relative;
+    width: 2em;
+    height: 1.5em;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 1em/0.6em;
+    z-index: 1;
+}
+.eye:before, .eye:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+.eye:before {
+    width: 1em;
+    height: 1em;
+    background: #e84c3d;
+    z-index: 2;
+    left: 8px;
+    top: 4px;
+}
+.eye:after {
+    width: 0.5em;
+    height: 0.5em;
+    background: #fff;
+    z-index: 3;
+    left: 12px;
+    top: 8px;
+}
+.number {
+    text-align: center;
+    text-transform: uppercase;
+}
+.number h3 {
+    color: #e84c3d;
+    margin: 0.9em 0 0 0;
+    font-size: 2.5em;
+}
+.number span {
+    display: block;
+    color: #a2aeae;
+}
+.barcode {
+    height: 2em;
+    width: 0;
+    margin: 1.2em 0 0 0.8em;
+    box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
+} */
+
+
+.box{
+  margin:0px auto;
+  margin-top:80px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background:#FFF9EE url(https://subtlepatterns.com/patterns/lightpaperfibers.png);
+  color:#333;
+  text-transform:uppercase;
+  padding:8px;
+  width:300px;
+  font-weight:bold;
+  text-shadow:0px 1px 0px #fff;
+  font-family:"arvo";
+  font-size: 11px;
+  border-left: 1px dashed rgba(51, 51, 51, 0.5);
+  -webkit-filter: drop-shadow(0 5px 18px #000);
+  display: inline-block;
+  justify-content: center;
+}
+
+.inner{
+  border: 2px dashed rgba(51, 51, 51, 0.5);
+  min-height:100px;
+  padding:8px;
+  
+}
+.inner h1{
+  padding:5px 0px;
+  margin:0px;
+  font-size:18px;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+  text-align:center;
+}
+.info{
+  width:100%;
+  margin-top:5px;
+}
+.info .wp{
+  float: left;
+  padding: 5px;
+  width: 83px;
+  text-align: center;
+}
+.info .wp h2{
+  margin: 8px;
+}
+.total{
+  border-top: 1px solid rgba(51, 51, 51, 0.3);
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.total h2{
+  padding-left:165px;
+  margin:10px 0px; 
+  font-size: 12px;
+  display: inline-block;
+}
+
+.total p{float:right;margin:0px;margin-right: 2px;}
+
+a.buy{
+  color:#fff;
+  text-align:center;
+  font-size:25px;
+  text-decoration:none;
+  display:block;
+  width:200px;
+  margin:0px auto;
+  margin-top:50px;
+  padding:5px;
+  background:rgba(0,0,0,0.5);
+}
