@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  Input } from '@angular/core';
 import { ScreenComponent } from '../screen/screen.component';
 import { ServiceService } from 'src/app/services/service.service';
-import { seats } from 'src/app/Models/seats';
+import seat from 'src/app/Models/seats';
 import { Router } from '@angular/router';
 
 

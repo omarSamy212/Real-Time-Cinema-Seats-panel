@@ -11,6 +11,7 @@ import { TicketComponent } from './Components/ticket/ticket.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { TestComponent } from './Components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ScreenComponent,
     PaymentComponent,
     TicketComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

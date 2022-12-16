@@ -1,5 +1,5 @@
-export class seats
+export default class seats
 {
-    seatId?:string;
-    State?:boolean;
+    id?:string;
+    // State?:boolean;
 }

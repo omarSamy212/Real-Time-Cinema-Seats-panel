@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { movie } from '../Models/movie';
 import { ScreenComponent } from '../Components/screen/screen.component';
-import { seats } from '../Models/seats';
+import  seat  from '../Models/seats';
+import { addDoc, Firestore, collection, doc, updateDoc, setDoc, getDoc, deleteDoc } from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,14 @@ export class ServiceService
 {
   
   selectedseats:string[]=[];
-  reservedseats:string[]=['A1','C2','D9'];
+  reservedseats:string[]=[];
   seatPrice=120;
   Tax:number=20;
+  name?:string
+  time?:string='10AM'
 
-  constructor() 
+
+  constructor(private db: Firestore) 
   {}
 
   pushSelectedForPayment(seat:string[])
@@ -44,4 +48,55 @@ export class ServiceService
   {
     this.selectedseats=[];
   }
+
+  //Firebase//
+
+  addNewDocument(seat: seat) {
+    const dbInstance = collection(this.db, "seats");
+    return addDoc(dbInstance, { ...seat });
 }
+
+addNewDocumentWithSpecificID(seats: seat, mvid: string,time:string) {
+    const dbInstance = collection(this.db, `mvSeats/${mvid}/${time}`);
+    return setDoc(doc(dbInstance,seats.id),  {...seats} );
+}
+
+bookSeat(mvid: string, time:string,seatid:string[]) {
+    const dataUpdate = doc(this.db, `mvSeats/${mvid}/${time}`,"ResSeats");
+    return updateDoc(dataUpdate, {
+        s:seatid
+    });
+}
+
+getDocument(reservedseats: string) {
+    const dbInstance = collection(this.db, "movie");
+    return getDoc(doc(dbInstance, reservedseats));
+}
+
+
+getAll() 
+{
+    return collection(this.db, `mvSeats/avengers/${this.time}`);
+}
+
+deleteDocument(id: string) {
+    const dataDelete = doc(this.db, "user", id);
+    return deleteDoc(dataDelete);
+}
+
+addMovieSeats(seat: seat, id: string) {
+  const dbInstance = collection(this.db, "movie");
+  return setDoc(doc(dbInstance, id), { ...seat });
+}
+getresSeats(mvId:string,time:string)
+{ 
+  const dbInstance = collection(this.db, `mvSeats/${mvId}/${time}`);
+  return getDoc(doc(dbInstance,"ResSeats"));
+}
+
+
+
+
+}
+
+

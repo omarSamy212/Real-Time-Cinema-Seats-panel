@@ -8,7 +8,7 @@
                       <p>Enjoy the movie 
                         <img style="width:7% ;" src="https://freepngimg.com/thumb/emoji/73723-emoticon-smiley-sticker-honda-up-amaze-thumbs.png"> 
                     </p>
-                      <a (click)="cState()" style="cursor: pointer;" >Show ticket</a>
+                      <a  (click)="cState()" style="cursor: pointer;" >Show ticket</a>
                       <div class="clr"></div>
                   </div>
                   <div class="clr"></div>
@@ -53,10 +53,10 @@
   <div class="box"  *ngFor="let i of seat" [hidden]="state">
    
             <div class='inner'>
-            <h1>Avengers:End-Game</h1>
+            <h1>{{name}}</h1>
             <div class='info clearfix'>
             <div class='wp'>Seat<h2>{{i}}</h2></div>
-            <div class='wp'>Type<h2>VIP</h2></div>
+            <div class='wp'>Time<h2>{{time}}</h2></div>
             <div class='wp'>Screen<h2>5</h2></div>
             </div>
             <div class='total clearfix'>

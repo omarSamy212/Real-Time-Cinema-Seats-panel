@@ -7,15 +7,24 @@ import { ServiceService } from 'src/app/services/service.service';
   templateUrl: './ticket.component.html',
   styleUrls: ['./ticket.component.css']
 })
-export class TicketComponent implements OnInit {
+export class TicketComponent implements OnInit 
+{
 
   constructor(private service:ServiceService,private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  name?:string
+  time?:string
   state:boolean=true;
   seat:string[]=this.service.selectedseats;
   tPerTicket=this.service.seatPrice+this.service.Tax;
+  ngOnInit(): void 
+  {
+    this.name=this.service.name
+    this.time=this.service.time
+  }
+
+ 
+
 
   cState()
   {
@@ -27,4 +36,8 @@ export class TicketComponent implements OnInit {
     this.service.clearSelected();
     this.router.navigate(['/']);
   }
+  getInfo()
+  {
+  }
+
 }

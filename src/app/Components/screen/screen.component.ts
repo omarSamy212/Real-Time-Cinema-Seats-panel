@@ -1,43 +1,92 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, TitleStrategy } from '@angular/router';
-import { seats } from 'src/app/Models/seats';
+import  Seat from 'src/app/Models/seats';
 import { ServiceService } from 'src/app/services/service.service';
+import { collectionSnapshots, DocumentReference, DocumentSnapshot,collectionChanges } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { Serializer } from '@angular/compiler';
+import { of } from 'rxjs';
 @Component(
     {
         selector: 'app-screen',
         templateUrl: './screen.component.html',
         styleUrls: ['./screen.component.css']
     })
-export class ScreenComponent 
+export class ScreenComponent implements OnInit
 {
 
 
   movieTitle:string = "Captain America: The Winter Soldier";
     screen: string = "LUXE CINEMAS";
-    time: string = "FRI, 6:45PM";
+    time: string = '10AM';
     
 
     rows: string[] = ['A', 'B', 'C', 'D', 'E'];
     cols: number[]  = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     selected: string[] = [];
-    reserved: string[]=[];
+    reserved: Seat[]=[];
+    selecReserv: string[]=[];
     
     ticketPrice: number = 120;
     convFee: number = 30;
     totalPrice: number = 0;
     currency: string = " EGP ";
+    seat:Seat
+    rseats : any[]=[]
+    alert:number=0
     constructor(private router:Router,private service:ServiceService)
     {
-        this.reserved=this.service.getReservedSeats();
+        this.seat = new Seat();
+    }
 
+    ngOnInit()
+    {
+        
+        // this.service.getresSeats("avengers",this.time).then((data: DocumentSnapshot) => 
+        //   {
+        //     this.reserved = data?.data()?.['s'];
+        //     console.log(this.reserved)
+        //   });
+
+        this.service.time=this.time
+        collectionSnapshots(this.service.getAll()).pipe(
+            map((seats) => {
+              return seats.map((s) => {
+                return ({ id:s.id,...s.data()})
+              })
+            })
+          ).subscribe(data => {
+            this.reserved = data;
+          });
+          
+
+    }
+
+    getSeats()
+    {
+        var s :string[]=[]
+            for(let i of this.reserved)
+            {
+                s.push(i.id!)
+            }
+        this.service.getresSeats("avengers",this.time).then((data: DocumentSnapshot) => 
+          {
+            s = data?.data()?.['s'];
+            console.log(this.reserved)
+          });
     }
 
     //return status of each seat
     getStatus (seatPos: string) 
     {
+            var s :string[]=[]
+            for(let i of this.reserved)
+            {
+                s.push(i.id!)
+            }
            
-            if(this.reserved.indexOf(seatPos) !== -1) 
+            if(s.indexOf(seatPos) !== -1) 
             {
                 return -1;
             } 
@@ -55,6 +104,11 @@ export class ScreenComponent
     //click handler
     seatClicked (seatPos: string) 
     {
+        var s :string[]=[]
+        for(let i of this.reserved)
+        {
+            s.push(i.id!)
+        }
             var index = this.selected.indexOf(seatPos);
             if(index !== -1) 
             {
@@ -66,7 +120,7 @@ export class ScreenComponent
                 if(this.selected.length<6)
                 { 
                     //push to selected array only if it is not reserved
-                    if(this.reserved.indexOf(seatPos) === -1)
+                    if(s.indexOf(seatPos) === -1)
                         this.selected.push(seatPos);
                  }
             }
@@ -90,6 +144,10 @@ export class ScreenComponent
     {
         this.router.navigate(['/payment']);
     }
+    showTicket()
+    {
+        this.router.navigate(['/ticket']);
+    }
 
     getNoOfselected()
     {
@@ -99,7 +157,43 @@ export class ScreenComponent
     {
          return this.selected[this.selected.length-1];
     }
-    
-        
+     
+  
+    startTimer() 
+    {
+        let timeLeft: number = 10;
+        let interval;
+        interval = setInterval(() => {
+        if( timeLeft > 0) 
+        {
+            this.alert=1
+            timeLeft--;
+        } else 
+        {
+            this.alert=0
+        }
+      },1000)
+    }
+
+    pushtoreserved()
+    {
+
+            for(let i of this.selected)
+            {
+                this.seat.id = i;
+                this.service.addNewDocumentWithSpecificID(this.seat, "avengers",this.time)
+                    // .then(() => {
+                    // alert("added")});
+            }
+            for(let i of this.rseats)
+            {
+              this.reserved.push(i.id)
+            }
+            this.service.name="avengers"
+            this.service.time=this.time
+            this.selecReserv=this.selected
+            this.startTimer()
+            this.selected=[]
+    }
     
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ScreenComponent } from './Components/screen/screen.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
+import { TestComponent } from './Components/test/test.component';
 
 const routes: Routes = 
 [
@@ -10,6 +11,7 @@ const routes: Routes =
   { path: 'payment', component:PaymentComponent},
   { path: 'ticket', component:TicketComponent},
   { path: 'ticket', component:TicketComponent},
+  { path: 'test', component:TestComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

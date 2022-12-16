@@ -28,6 +28,11 @@ body
   {
     padding: 29px;
   }
+
+  .form-select
+  {
+    width: 10%;
+  }
 .seat 
 {
     height: 20px;
@@ -116,4 +121,9 @@ body
 {
     margin: 50px;
     background-color: rgb(5,68,94);
+}
+
+svg
+{
+  width:20px
 }
