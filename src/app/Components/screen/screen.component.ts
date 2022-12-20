@@ -34,7 +34,7 @@ export class ScreenComponent implements OnInit
     currency: string = " EGP ";
     seat:Seat
     rseats : any[]=[]
-    alert:number=0
+    alert=0
     constructor(private router:Router,private service:ServiceService)
     {
         this.seat = new Seat();
@@ -63,19 +63,19 @@ export class ScreenComponent implements OnInit
 
     }
 
-    getSeats()
-    {
-        var s :string[]=[]
-            for(let i of this.reserved)
-            {
-                s.push(i.id!)
-            }
-        this.service.getresSeats("avengers",this.time).then((data: DocumentSnapshot) => 
-          {
-            s = data?.data()?.['s'];
-            console.log(this.reserved)
-          });
-    }
+    // getSeats()
+    // {
+    //     var s :string[]=[]
+    //         for(let i of this.reserved)
+    //         {
+    //             s.push(i.id!)
+    //         }
+    //     this.service.getresSeats("avengers",this.time).then((data: DocumentSnapshot) => 
+    //       {
+    //         s = data?.data()?.['s'];
+    //         console.log(this.reserved)
+    //       });
+    // } 
 
     //return status of each seat
     getStatus (seatPos: string) 
@@ -94,6 +94,7 @@ export class ScreenComponent implements OnInit
             {
                 return 1;
                 console.log(this.selected[0])
+                
             }
     }
     //clear handler
@@ -161,9 +162,8 @@ export class ScreenComponent implements OnInit
   
     startTimer() 
     {
-        let timeLeft: number = 10;
-        let interval;
-        interval = setInterval(() => {
+        let timeLeft= 7;
+        var timer=setInterval(() => {
         if( timeLeft > 0) 
         {
             this.alert=1
@@ -171,8 +171,10 @@ export class ScreenComponent implements OnInit
         } else 
         {
             this.alert=0
+            clearInterval(timer)
         }
       },1000)
+    
     }
 
     pushtoreserved()
@@ -181,7 +183,7 @@ export class ScreenComponent implements OnInit
             for(let i of this.selected)
             {
                 this.seat.id = i;
-                this.service.addNewDocumentWithSpecificID(this.seat, "avengers",this.time)
+                this.service.addNewDocumentWithSpecificID(this.seat, "HomeAlone",this.time)
                     // .then(() => {
                     // alert("added")});
             }

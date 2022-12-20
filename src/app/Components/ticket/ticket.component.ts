@@ -23,9 +23,6 @@ export class TicketComponent implements OnInit
     this.time=this.service.time
   }
 
- 
-
-
   cState()
   {
     this.state=!this.state;

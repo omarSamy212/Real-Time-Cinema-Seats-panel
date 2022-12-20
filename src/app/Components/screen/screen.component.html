@@ -1,6 +1,6 @@
-<div *ngIf="alert"  class="alert alert-primary d-flex align-items-center" role="alert" style="width: 50%; height:8%;padding: 10px;text-align: center;margin-top: 30px;justify-content: center;margin-left: 24%;">
+<div *ngIf="alert" id="alert"  class="alert alert-primary d-flex align-items-center" role="alert" style="width: 50%; height:8%;padding: 10px;text-align: center;margin-top: 30px;justify-content: center;margin-left: 24%;">
   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-  <div>
+  <div >
       Seat:{{selecReserv}} Booked Successefuly
   </div>
 </div>
@@ -15,7 +15,7 @@
               <span class="seat freeSeat"><small>N/A</small></span>
             </li>
             <li>
-              <span class="seat selectedSeat"><small>Selected</small></span>
+              <span class="seat" style="background-color: #0081cb !important;"><small>Selected</small></span>
             </li>
             <li>
               <span class="seat reservedSeat"><small>Occupied</small></span>
@@ -37,10 +37,13 @@
 
         <!-- Generate the seating grid -->
         <div *ngFor="let row of rows">
-            <span class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col)" index as i
+           
+          <span  class="seat" *ngFor="let col of cols" (click)="ngOnInit()" (click)="seatClicked(row + col)" index as i
               [ngSwitch]="getStatus(row + col)">
+              <h6 style="color: #f1f1f1;transform:none;transition: none;">{{row+col}}</h6>  
                 <span *ngSwitchCase=1 class="seat selectedSeat"></span>
                 <span *ngSwitchCase=-1 class="seat reservedSeat"></span>
+                <span *ngSwitchCase=2 class="seat selected2Seat"></span>
                 <span *ngSwitchDefault class="seat freeSeat"></span>
         </span>
         </div>
@@ -53,7 +56,7 @@
             <div class="book-item">
                 <span>You have Choosed Seat</span>
                 <h3 [hidden]="getNoOfselected()===0" class="title">
-                  <p>{{getcurrentselected()}}</p>
+                  <p *ngFor="let i of selected" style="display:inline-block;">{{i+' , '}}</p>
                 </h3>
             </div>
             <div class="book-item">
@@ -65,7 +68,7 @@
         <!-- Action buttons -->
         <div class="buttonBar marginTop5" style="color: #f1f1f1;"> 
                 <!-- <button (click)="pushToSelected()" (click)="goToPayment()"  [disabled]="getNoOfselected() === 0" class="btn btn-success btn-sm">Continue To Payment</button> -->
-                <button (click)="pushToSelected()"  (click)="pushtoreserved()"   [disabled]="getNoOfselected() === 0" class="btn btn-success btn-sm">Continue To Payment</button>
+                <button (click)="pushToSelected()"  (click)="pushtoreserved()"   [disabled]="getNoOfselected() === 0" class="btn btn-success btn-sm">Confirm Booking</button>
         </div>                
         <div class="buttonBar marginTop5" style="color: #f1f1f1;"> 
                 <button (click)="showTicket()"  [disabled]="selecReserv.length===0" class="btn btn-success btn-sm">Tickets</button>

@@ -76,7 +76,7 @@ getDocument(reservedseats: string) {
 
 getAll() 
 {
-    return collection(this.db, `mvSeats/avengers/${this.time}`);
+    return collection(this.db, `mvSeats/HomeAlone/${this.time}`);
 }
 
 deleteDocument(id: string) {
@@ -88,6 +88,7 @@ addMovieSeats(seat: seat, id: string) {
   const dbInstance = collection(this.db, "movie");
   return setDoc(doc(dbInstance, id), { ...seat });
 }
+
 getresSeats(mvId:string,time:string)
 { 
   const dbInstance = collection(this.db, `mvSeats/${mvId}/${time}`);
