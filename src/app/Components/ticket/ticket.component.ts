@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceService } from 'src/app/services/service.service';
+import { ServiceService } from 'src/app/Service/service.service'; 
 
 @Component({
   selector: 'app-ticket',
@@ -19,7 +19,7 @@ export class TicketComponent implements OnInit
   tPerTicket=this.service.seatPrice+this.service.Tax;
   ngOnInit(): void 
   {
-    this.name=this.service.name
+    this.name=this.service.mvID
     this.time=this.service.time
   }
 
