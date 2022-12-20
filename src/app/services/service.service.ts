@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { movie } from '../Models/movie';
-import { ScreenComponent } from '../Components/screen/screen.component';
-import  seat  from '../Models/seats';
 import { addDoc, Firestore, collection, doc, updateDoc, setDoc, getDoc, deleteDoc } from "@angular/fire/firestore";
+import  seat  from '../Model/seats';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ServiceService
   reservedseats:string[]=[];
   seatPrice=120;
   Tax:number=20;
-  name?:string
+  mvID?:string
   time?:string='10AM'
 
 
@@ -76,7 +76,7 @@ getDocument(reservedseats: string) {
 
 getAll() 
 {
-    return collection(this.db, `mvSeats/HomeAlone/${this.time}`);
+    return collection(this.db, `mvSeats/${this.mvID}/${this.time}`);
 }
 
 deleteDocument(id: string) {
