@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, TitleStrategy } from '@angular/router';
-import  Seat from 'src/app/Models/seats';
-import { ServiceService } from 'src/app/services/service.service';
+import  Seat from 'src/app/Model/seats';
+import { ServiceService } from 'src/app/Service/service.service';
 import { collectionSnapshots, DocumentReference, DocumentSnapshot,collectionChanges } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Serializer } from '@angular/compiler';
@@ -183,7 +183,7 @@ export class ScreenComponent implements OnInit
             for(let i of this.selected)
             {
                 this.seat.id = i;
-                this.service.addNewDocumentWithSpecificID(this.seat, "HomeAlone",this.time)
+                this.service.addNewDocumentWithSpecificID(this.seat, this.service.mvID!,this.time)
                     // .then(() => {
                     // alert("added")});
             }
@@ -191,7 +191,6 @@ export class ScreenComponent implements OnInit
             {
               this.reserved.push(i.id)
             }
-            this.service.name="avengers"
             this.service.time=this.time
             this.selecReserv=this.selected
             this.startTimer()
